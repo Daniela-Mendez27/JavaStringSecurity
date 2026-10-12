@@ -4,6 +4,7 @@ package com.platzipizzeria.service;
 import com.platzipizzeria.persistence.entity.OrderEntity;
 import com.platzipizzeria.persistence.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -37,6 +38,10 @@ public class OrderService {
     public List<OrderEntity> getOutsideOrders() {
         List<String> methods = Arrays.asList(DELIVERY, CARRYOUT);
         return this.orderRepository.findAllByMethodIn(methods);
+    }
+
+    public List<OrderEntity> getCustomerOrders(@Param("id") String idCustomer) {
+        return this.orderRepository.findCustomerOrders(idCustomer);
     }
 
 
