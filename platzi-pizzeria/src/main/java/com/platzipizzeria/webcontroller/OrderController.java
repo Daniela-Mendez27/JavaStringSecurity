@@ -1,6 +1,7 @@
 package com.platzipizzeria.webcontroller;
 
 import com.platzipizzeria.persistence.entity.OrderEntity;
+import com.platzipizzeria.persistence.projection.OrderSummary;
 import com.platzipizzeria.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +43,12 @@ public class OrderController {
     public ResponseEntity<List<OrderEntity>> getCustomerOrders(@PathVariable String id) {
         return ResponseEntity.ok(this.orderService.getCustomerOrders(id));
     }
+
+    @GetMapping("/summary/{id}")
+    public ResponseEntity<OrderSummary> getSummary(@PathVariable int id) {
+        return ResponseEntity.ok(this.orderService.getSummany(id));
+    }
+
 
 
 

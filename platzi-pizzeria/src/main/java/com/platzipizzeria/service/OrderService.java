@@ -2,6 +2,7 @@ package com.platzipizzeria.service;
 
 
 import com.platzipizzeria.persistence.entity.OrderEntity;
+import com.platzipizzeria.persistence.projection.OrderSummary;
 import com.platzipizzeria.persistence.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -42,6 +43,9 @@ public class OrderService {
 
     public List<OrderEntity> getCustomerOrders(@Param("id") String idCustomer) {
         return this.orderRepository.findCustomerOrders(idCustomer);
+    }
+    public OrderSummary getSummany(int orderId) {
+        return this.orderRepository.findSummary(orderId);
     }
 
 
