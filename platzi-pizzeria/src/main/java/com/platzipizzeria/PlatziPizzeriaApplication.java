@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories
-
+@EnableJpaAuditing
 
 public class PlatziPizzeriaApplication {
 
