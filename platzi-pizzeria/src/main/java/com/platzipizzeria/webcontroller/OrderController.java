@@ -3,12 +3,10 @@ package com.platzipizzeria.webcontroller;
 import com.platzipizzeria.persistence.entity.OrderEntity;
 import com.platzipizzeria.persistence.projection.OrderSummary;
 import com.platzipizzeria.service.OrderService;
+import com.platzipizzeria.service.dto.RandomOrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -48,8 +46,10 @@ public class OrderController {
     public ResponseEntity<OrderSummary> getSummary(@PathVariable int id) {
         return ResponseEntity.ok(this.orderService.getSummany(id));
     }
-
-
+    @PostMapping("/random")
+    public ResponseEntity<Boolean> randomOrder(@RequestBody RandomOrderDto dto) {
+        return ResponseEntity.ok(this.orderService.saveRandomOrder(dto));
+    }
 
 
 }

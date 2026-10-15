@@ -4,6 +4,7 @@ package com.platzipizzeria.service;
 import com.platzipizzeria.persistence.entity.OrderEntity;
 import com.platzipizzeria.persistence.projection.OrderSummary;
 import com.platzipizzeria.persistence.repository.OrderRepository;
+import com.platzipizzeria.service.dto.RandomOrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,8 @@ public class OrderService {
     public OrderSummary getSummany(int orderId) {
         return this.orderRepository.findSummary(orderId);
     }
-
+    public boolean saveRandomOrder(RandomOrderDto randomOrderDto) {
+        return this.orderRepository.saveRandomOrder(randomOrderDto.getIdCustomer(), randomOrderDto.getMethod());
+    }
 
 }
