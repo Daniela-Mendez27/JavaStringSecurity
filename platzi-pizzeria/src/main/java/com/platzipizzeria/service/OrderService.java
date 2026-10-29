@@ -7,6 +7,7 @@ import com.platzipizzeria.persistence.repository.OrderRepository;
 import com.platzipizzeria.service.dto.RandomOrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -41,7 +42,7 @@ public class OrderService {
         List<String> methods = Arrays.asList(DELIVERY, CARRYOUT);
         return this.orderRepository.findAllByMethodIn(methods);
     }
-
+    @Secured("ROLE ADMIN")
     public List<OrderEntity> getCustomerOrders(@Param("id") String idCustomer) {
         return this.orderRepository.findCustomerOrders(idCustomer);
     }
